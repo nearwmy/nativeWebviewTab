@@ -11,17 +11,16 @@
 
 	<body>
 		<script type="text/javascript">
-			var subpage_style = {
+		var subpage_style = {
 				top: '0px',
 				bottom: '51px'
-			};
-			var subpages = ['html/tab-webview-subpage-about.html', 'html/tab-webview-subpage-chat.html', 'html/tab-webview-subpage-contact.html', 'html/tab-webview-subpage-setting.html'];
-
-			var aniShow = {};
+			},
+			subpages = ['html/tab-webview-subpage-about.html', 'html/tab-webview-subpage-chat.html', 'html/tab-webview-subpage-contact.html', 'html/tab-webview-subpage-setting.html'],
+			aniShow = {};
 
 			mui.plusReady(function() {
-				var self = plus.webview.currentWebview(),
-					nviews = self.getSubNViews(),
+				var launchWV = plus.webview.currentWebview(),
+					nviews = launchWV.getSubNViews(),
 					active_color = '#007aff',
 					normal_color = '#000';
 
@@ -35,22 +34,23 @@
 						} else {
 							temp[subpages[i]] = "true";
 							mui.extend(aniShow, temp);
-							toggleNview(self.getStyle().subNViews[0], 0);
+							
+							changeNview(launchWV.getStyle().subNViews[0], 0);
 						}
 
-						self.append(sub);
+						launchWV.append(sub);
 						//针对每个subnview 监听点击切换
 						nviews[i].addEventListener('click', clickEvent, false);
 					}
 				}
 
 				var activePage = plus.webview.getWebviewById(subpages[0]);
-
+				
 				// 响应点击事件
 				function clickEvent(e) {
 					var currId = e.target.id,
 						currIndex = parseInt(currId.substr(currId.length - 1, 1) - 1),
-						currView = self.getStyle().subNViews[currIndex],
+						currView = lanuchWV.getStyle().subNViews[currIndex],
 						targetView = nviews[currIndex];
 
 					targetPage = plus.webview.getWebviewById(subpages[currIndex]);
@@ -59,8 +59,14 @@
 						return;
 					}
 					//底部选项卡切换
-					toggleNview(currView, currIndex);
-
+					changeNview(currView, currIndex);
+					
+					//子窗口切换
+					changePage();
+					
+				}
+				
+				function changePage(){
 					//若为iOS平台或非首次显示，则直接显示
 					if(mui.os.ios || aniShow[targetPage]) {
 						plus.webview.show(targetPage);
@@ -76,54 +82,52 @@
 					//更改当前活跃的页面
 					activePage = targetPage;
 				}
-
-				// 解析对象
-				function tranObj(e) {
-					for(var key in e.target) {
-						console.log(key + '=' + e[key]);
-						if(typeof e[key] == 'object') {
-							tranObj(e[key]);
-						}
-					}
-				}
-
+				
 				//更改颜色
 				function changeColor(obj, color) {
 					obj.color = color;
 					return obj
 				}
-
-				function toggleNview(currObj, currIndex) {
+				
+				/** 
+				 * 切换底部选项卡
+				 * 更改subnview 颜色
+				 * 
+				 */
+				function changeNview(currObj, currIndex) {
 					// 重绘当前nview
-					self.updateSubNViews([{
+//						updateSubNView(currObj);
+						launchWV.updateSubNViews([{
 						id: currObj.id,
 						tags: [{
 							tag: 'font', //currObj.tag
 							id: currObj.id + 1,
 							position: currObj.tags[0].position,
 							text: currObj.tags[0].text,
-							textStyles: changeColor(currObj.tags[0].textStyles, active_color)
+							textStyles: changeColor(currObj.tags[0].textStyles, normal_color)
 						}, {
-							tag: 'font',
+							tag: 'font', //currObj.tag
 							id: currObj.id + 2,
 							position: currObj.tags[1].position,
 							text: currObj.tags[1].text,
-							textStyles: changeColor(currObj.tags[1].textStyles, active_color)
+							textStyles: changeColor(currObj.tags[1].textStyles, normal_color)
 						}]
 					}])
 
 					// 重绘兄弟nview
 					for(var i = 0; i < 4; i++) {
-						var viewObj = self.getStyle().subNViews[i];
+						var viewObj = launchWV.getStyle().subNViews[i];
 
 						if(i !== currIndex) {
 							updateSubNView(viewObj);
 						}
 					}
 				};
-
+				
+				//更新subNView绘制
 				function updateSubNView(obj) {
-					self.updateSubNViews([{
+					
+					launchWV.updateSubNViews([{
 						id: obj.id,
 						tags: [{
 							tag: 'font', //obj.tag
@@ -132,7 +136,7 @@
 							text: obj.tags[0].text,
 							textStyles: changeColor(obj.tags[0].textStyles, normal_color)
 						}, {
-							tag: 'font',
+							tag: 'font', //obj.tag
 							id: obj.id + 2,
 							position: obj.tags[1].position,
 							text: obj.tags[1].text,
@@ -140,6 +144,7 @@
 						}]
 					}])
 				}
+				
 			});
 		</script>
 	</body>
