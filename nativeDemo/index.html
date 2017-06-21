@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+	<link href="css/mui.min.css" rel="stylesheet" />
+</head>
+<body>
+	<button onclick="createView()">create nview</button>
+	<script type="text/javascript">
+			mui.plusReady(function() {
+				console.info('plus already******');
+//				createView();
+			});
+
+			// 创建原生View控件
+			function createView() {
+				var nv,
+					tabBar1Tags = [],
+					tabBar2Tags = [],
+					tabBar3Tags = [],
+					tabBar4Tags = [],
+					tabBarW = Math.ceil(window.innerWidth / 4) + 'px', //兼容ios设置百分比有间隙
+					styles = {},
+					textIconStyle = {
+						fontSrc: '_www/fonts/mui.ttf',
+						align: 'center',
+						size: '24px'
+					},
+					textStyle = {
+						align: 'center',
+						size: '10px'
+					};
+
+				tabBar1Tags = [{
+					tag: 'font',
+					id: 'tabBar11',
+					text: '\ue500',
+					position: {
+						top: '4px',
+						left: '0',
+						width: '100%',
+						height: '24px'
+					},
+					textStyles: textIconStyle
+				}, {
+					tag: 'font',
+					id: 'tabBar12',
+					text: '首页',
+					position: {
+						top: '23px',
+						left: '0',
+						width: '100%',
+						height: '24px'
+					},
+					textStyles: textStyle
+				}];
+
+				tabBar2Tags = [{
+					tag: 'font',
+					id: 'tabBar21',
+					text: '\ue201',
+					position: {
+						top: '4px',
+						left: '0',
+						width: '100%',
+						height: '24px'
+					},
+					textStyles: textIconStyle
+				}, {
+					tag: 'font',
+					id: 'tabBar22',
+					text: '消息',
+					position: {
+						top: '23px',
+						left: '0',
+						width: '100%',
+						height: '24px'
+					},
+					textStyles: textStyle
+				}];
+
+				tabBar3Tags = [{
+					tag: 'font',
+					id: 'tabBar31',
+					text: '\ue100',
+					position: {
+						top: '4px',
+						left: '0',
+						width: '100%',
+						height: '24px'
+					},
+					textStyles: textIconStyle
+				}, {
+					tag: 'font',
+					id: 'tabBar32',
+					text: '通讯录',
+					position: {
+						top: '24px',
+						left: '0',
+						width: '100%',
+						height: '24px'
+					},
+					textStyles: textStyle
+				}];
+
+				tabBar4Tags = [{
+					tag: 'font',
+					id: 'tabBar41',
+					text: '\ue502',
+					position: {
+						top: '4px',
+						left: '0',
+						width: '100%',
+						height: '24px'
+					},
+					textStyles: textIconStyle
+				}, {
+					tag: 'font',
+					id: 'tabBar42',
+					text: '设置',
+					position: {
+						top: '24px',
+						left: '0',
+						width: '100%',
+						height: '24px'
+					},
+					textStyles: textStyle
+				}];
+
+				styles = {
+					bottom: '0px',
+					background: '#fff',
+					subNViews: [{
+							id: 'tabBar1',
+							styles: {
+								bottom: '0px',
+								left: '0',
+								height: '50px',
+								width: tabBarW,
+								backgroundColor: '#fff',
+							},
+							tags: tabBar1Tags
+						}, {
+							id: 'tabBar2',
+							styles: {
+								bottom: '0px',
+								left: '25%',
+								height: '50px',
+								width: tabBarW,
+								backgroundColor: '#fff',
+							},
+							tags: tabBar2Tags
+						}, {
+							id: 'tabBar3',
+							styles: {
+								bottom: '0px',
+								left: '50%',
+								height: '50px',
+								width: tabBarW,
+								backgroundColor: '#fff',
+							},
+							tags: tabBar3Tags
+						}, {
+							id: 'tabBar4',
+							styles: {
+								bottom: '0px',
+								left: '75%',
+								height: '50px',
+								width: tabBarW,
+								backgroundColor: '#fff'
+							},
+							tags: tabBar4Tags
+						}, {
+							id: 'tabBar5',
+							styles: {
+								bottom: '50px',
+								left: '0',
+								height: '1px',
+								width: '100%',
+								backgroundColor: '#ccc'
+							},
+							tags: [{
+								tag: 'rect',
+								id: 'tabBorder',
+								position: {
+									top: '0',
+									left: '0',
+									width: '100%',
+									height: '1px'
+								},
+								rectStyles: {
+									color: '#ccc'
+								}
+							}]
+						}, 
+						{
+							id: 'tabBar7',
+							styles: {
+								bottom: '25px',
+								left: Math.ceil((window.innerWidth - 50) / 2) + 2 + 'px',
+								height: '50px',
+								width: '50px',
+								backgroundColor: 'rgba(0,0,0,0)'
+							},
+							tags: [{
+								tag: 'img',
+								id: 'tabIcon',
+								src:'/images/icon2.png',
+								position: {
+									top: '0',
+									left: '0',
+									width: '50px',
+									height: '50px'
+								}
+							}]
+						}
+					]
+				};
+				//创建包含原生nview的首页
+//				nv = plus.webview.create('test.html', 'index', styles);
+				nv = plus.webview.currentWebview();
+//				console.log(JSON.stringify(styles));
+//				nv.setStyle(styles);
+//				nv.setStyle({
+//					kernel:'WKWebview',
+//					render:'always',
+//					titleNView:{
+//						autoBackButton:true,
+//						backgroundColor:'#ccc',
+//						titleText:'标题页',
+//						titleColor:'#000'
+//					}
+//				});
+			}
+		</script>
+</body>
+</html>
