@@ -5,16 +5,16 @@
 		"iPad"
 	],
 	"id": "H52221B8C",/*应用的标识，创建应用时自动生成，勿手动修改*/
-	"name": "nativeDemo",/*应用名称，程序桌面图标名称*/
+	"name": "subNView 模式",/*应用名称，程序桌面图标名称*/
 	"version": {
 		"name": "1.0",/*应用版本名称*/
 		"code": ""
 	},
-	"description": "",/*应用描述信息*/
+	"description": "subNView 模式底部选项卡 + 底部凸起图标官方示例",/*应用描述信息*/
 	"icons": {
 		"72": "icon.png"
 	},
-	"launch_path": "launch.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"launch_path": "index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
 	"developer": {
 		"name": "",/*开发者名称*/
 		"email": "",/*开发者邮箱地址*/
@@ -118,7 +118,7 @@
 						"bottom": "0px",
 						"left": "0",
 						"height": "50px",
-						"width": "25%",
+						"width": "26%",
 						"backgroundColor": "#fff"
 					},
 					"tags": [
@@ -159,7 +159,7 @@
 						"bottom": "0px",
 						"left": "25%",
 						"height": "50px",
-						"width": "25%",
+						"width": "26%",
 						"backgroundColor": "#fff"
 					},
 					"tags": [
@@ -169,7 +169,7 @@
 							"text": "\ue201",
 							"position": {
 								"top": "4px",
-								"left": "0",
+								"left": "-20px",
 								"width": "100%",
 								"height": "24px"
 							},
@@ -184,7 +184,7 @@
 							"text": "消息",
 							"position": {
 								"top": "23px",
-								"left": "0",
+								"left": "-20px",
 								"width": "100%",
 								"height": "24px"
 							},
@@ -200,7 +200,7 @@
 						"bottom": "0px",
 						"left": "50%",
 						"height": "50px",
-						"width": "98px",
+						"width": "26%",
 						"backgroundColor": "#fff"
 					},
 					"tags": [
@@ -210,7 +210,7 @@
 							"text": "\ue100",
 							"position": {
 								"top": "4px",
-								"left": "0",
+								"left": "20px",
 								"width": "100%",
 								"height": "24px"
 							},
@@ -225,7 +225,7 @@
 							"text": "通讯录",
 							"position": {
 								"top": "24px",
-								"left": "0",
+								"left": "20px",
 								"width": "100%",
 								"height": "24px"
 							},
@@ -241,7 +241,7 @@
 						"bottom": "0px",
 						"left": "75%",
 						"height": "50px",
-						"width": "98px",
+						"width": "26%",
 						"backgroundColor": "#fff"
 					},
 					"tags": [
@@ -425,9 +425,15 @@
 			"index.html": {
 				"resources": [
 					"js/mui.min.js",
-					"css/mui.min.css"
+					"css/mui.min.css",
+					"html/tab-webview-subpage-about.html"
 				],
-				"refer": [],
+				"refer": [
+					"html/tab-webview-subpage-setting.html",
+					"html/tab-webview-subpage-chat.html",
+					"html/tab-webview-subpage-contact.html",
+					"html/new-webview.html"
+				],
 				"priority": 0
 			},
 			"launch.html": {
@@ -445,12 +451,40 @@
 			},
 			"html/tab-webview-subpage-setting.html": {
 				"resources": [
-					"fonts/mui.ttf"
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/mui.min.js"
 				],
 				"refer": [],
 				"priority": 0
 			},
 			"html/tab-webview-subpage-about.html": {
+				"resources": [
+					"css/mui.min.css",
+					"js/mui.min.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/tab-webview-subpage-chat.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/tab-webview-subpage-contact.html": {
+				"resources": [
+					"images/60x60.gif",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/new-webview.html": {
 				"resources": [
 					"css/mui.min.css"
 				],

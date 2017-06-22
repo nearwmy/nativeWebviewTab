@@ -1,240 +1,244 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title></title>
-    <script src="js/mui.min.js"></script>
-	<link href="css/mui.min.css" rel="stylesheet" />
-</head>
-<body>
-	<button onclick="createView()">create nview</button>
-	<script type="text/javascript">
-			mui.plusReady(function() {
-				console.info('plus already******');
-//				createView();
-			});
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>首页</title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+		<script type="text/javascript">
+			var subpage_style = {
+					top: '0px',
+					bottom: '51px'
+				},
+				subpages = ['html/tab-webview-subpage-about.html', 'html/tab-webview-subpage-chat.html', 'html/tab-webview-subpage-contact.html', 'html/tab-webview-subpage-setting.html'],
+				aniShow = {};
 
-			// 创建原生View控件
-			function createView() {
-				var nv,
-					tabBar1Tags = [],
-					tabBar2Tags = [],
-					tabBar3Tags = [],
-					tabBar4Tags = [],
-					tabBarW = Math.ceil(window.innerWidth / 4) + 'px', //兼容ios设置百分比有间隙
-					styles = {},
-					textIconStyle = {
-						fontSrc: '_www/fonts/mui.ttf',
-						align: 'center',
-						size: '24px'
-					},
-					textStyle = {
-						align: 'center',
-						size: '10px'
-					};
-
-				tabBar1Tags = [{
-					tag: 'font',
-					id: 'tabBar11',
-					text: '\ue500',
-					position: {
-						top: '4px',
-						left: '0',
-						width: '100%',
-						height: '24px'
-					},
-					textStyles: textIconStyle
-				}, {
-					tag: 'font',
-					id: 'tabBar12',
-					text: '首页',
-					position: {
-						top: '23px',
-						left: '0',
-						width: '100%',
-						height: '24px'
-					},
-					textStyles: textStyle
-				}];
-
-				tabBar2Tags = [{
-					tag: 'font',
-					id: 'tabBar21',
-					text: '\ue201',
-					position: {
-						top: '4px',
-						left: '0',
-						width: '100%',
-						height: '24px'
-					},
-					textStyles: textIconStyle
-				}, {
-					tag: 'font',
-					id: 'tabBar22',
-					text: '消息',
-					position: {
-						top: '23px',
-						left: '0',
-						width: '100%',
-						height: '24px'
-					},
-					textStyles: textStyle
-				}];
-
-				tabBar3Tags = [{
-					tag: 'font',
-					id: 'tabBar31',
-					text: '\ue100',
-					position: {
-						top: '4px',
-						left: '0',
-						width: '100%',
-						height: '24px'
-					},
-					textStyles: textIconStyle
-				}, {
-					tag: 'font',
-					id: 'tabBar32',
-					text: '通讯录',
-					position: {
-						top: '24px',
-						left: '0',
-						width: '100%',
-						height: '24px'
-					},
-					textStyles: textStyle
-				}];
-
-				tabBar4Tags = [{
-					tag: 'font',
-					id: 'tabBar41',
-					text: '\ue502',
-					position: {
-						top: '4px',
-						left: '0',
-						width: '100%',
-						height: '24px'
-					},
-					textStyles: textIconStyle
-				}, {
-					tag: 'font',
-					id: 'tabBar42',
-					text: '设置',
-					position: {
-						top: '24px',
-						left: '0',
-						width: '100%',
-						height: '24px'
-					},
-					textStyles: textStyle
-				}];
-
-				styles = {
-					bottom: '0px',
-					background: '#fff',
-					subNViews: [{
-							id: 'tabBar1',
-							styles: {
-								bottom: '0px',
-								left: '0',
-								height: '50px',
-								width: tabBarW,
-								backgroundColor: '#fff',
-							},
-							tags: tabBar1Tags
-						}, {
-							id: 'tabBar2',
-							styles: {
-								bottom: '0px',
-								left: '25%',
-								height: '50px',
-								width: tabBarW,
-								backgroundColor: '#fff',
-							},
-							tags: tabBar2Tags
-						}, {
-							id: 'tabBar3',
-							styles: {
-								bottom: '0px',
-								left: '50%',
-								height: '50px',
-								width: tabBarW,
-								backgroundColor: '#fff',
-							},
-							tags: tabBar3Tags
-						}, {
-							id: 'tabBar4',
-							styles: {
-								bottom: '0px',
-								left: '75%',
-								height: '50px',
-								width: tabBarW,
-								backgroundColor: '#fff'
-							},
-							tags: tabBar4Tags
-						}, {
-							id: 'tabBar5',
-							styles: {
-								bottom: '50px',
-								left: '0',
-								height: '1px',
-								width: '100%',
-								backgroundColor: '#ccc'
-							},
-							tags: [{
-								tag: 'rect',
-								id: 'tabBorder',
-								position: {
-									top: '0',
-									left: '0',
-									width: '100%',
-									height: '1px'
-								},
-								rectStyles: {
-									color: '#ccc'
-								}
-							}]
-						}, 
-						{
-							id: 'tabBar7',
-							styles: {
-								bottom: '25px',
-								left: Math.ceil((window.innerWidth - 50) / 2) + 2 + 'px',
-								height: '50px',
-								width: '50px',
-								backgroundColor: 'rgba(0,0,0,0)'
-							},
-							tags: [{
-								tag: 'img',
-								id: 'tabIcon',
-								src:'/images/icon2.png',
-								position: {
-									top: '0',
-									left: '0',
-									width: '50px',
-									height: '50px'
-								}
-							}]
-						}
-					]
-				};
-				//创建包含原生nview的首页
-//				nv = plus.webview.create('test.html', 'index', styles);
-				nv = plus.webview.currentWebview();
-//				console.log(JSON.stringify(styles));
-//				nv.setStyle(styles);
-//				nv.setStyle({
-//					kernel:'WKWebview',
-//					render:'always',
-//					titleNView:{
-//						autoBackButton:true,
-//						backgroundColor:'#ccc',
-//						titleText:'标题页',
-//						titleColor:'#000'
-//					}
-//				});
+			/**
+			 * 绘制原生view控件
+			 * 可以是 font（文本，字体图标）,img , rect
+			 * show 的先后顺序即层级关系
+			 */
+			function drawNative(id, styles, tags) {
+				var view = new plus.nativeObj.View(id, styles, tags);
+				return view
 			}
+
+			mui.plusReady(function() {
+				var self = plus.webview.currentWebview(),
+					nviews = self.getSubNViews(),
+					active_color = '#007aff',
+					normal_color = '#000',
+					leftPos = Math.ceil((window.innerWidth - 60) / 2) + 'px';
+				
+				/**	
+				 * drawNativeIconBg 绘制带边框的半圆，
+				 * 实现原理：
+				 *   id为bg的tag 创建带边框的圆
+				 *   id为bg2的tag 创建白色矩形遮住圆下半部分，只显示凸起带边框部分
+				 *   注意创建先后顺序，创建越晚的层级越高
+				 */
+				var drawNativeIconBg = drawNative('iconBg', {
+					bottom: '5px',
+					left: leftPos,
+					width: '60px',
+					height: '60px',
+					position:'dock'
+				}, [{
+					tag: 'rect',
+					id: 'bg',
+					position: {
+						top: '0px',
+						left: '0px',
+						width: '100%',
+						height: '100%'
+					},
+					rectStyles: {
+						color: '#fff',
+						radius: '50%',
+						borderColor: '#ccc',
+						borderWidth: '1px'
+					}
+				},{
+					tag: 'rect',
+					id: 'bg2',
+					position: {
+						bottom: '0px',
+						left: '0px',
+						width: '100%',
+						height: '45px'
+					},
+					rectStyles: {
+						color: '#fff'
+					}
+				}]);
+
+				/**
+				 * 凸起图标最后创建  浮在最顶层
+				 *
+				 */
+				var drawNativeIcon = drawNative('tabIcon', {
+					bottom: '10px',
+					left: leftPos,
+					width: '58px',
+					height: '50px',
+					position:'dock'
+				}, [{
+					tag: 'img',
+					id: 'icon',
+					src:'_www/images/icon.png',
+					color:'#ff0',
+//					text: '\ue609',
+					position: {
+						top: '0px',
+						left: '5px',
+						width: '50px',
+						height: '100%'
+					},
+//					textStyles: {
+//						fontSrc: '_www/fonts/iconfont.ttf',
+//						color: '#000',
+//						size: '60px'
+//					}
+				}])
+
+				//自定义监听图标点击事件
+				drawNativeIcon.addEventListener('click', function(e) {
+					mui.alert('你点击了图标，你可以在此打开摄像头或者新窗口等自定义点击事件。');
+				});
+				self.append(drawNativeIconBg);
+				self.append(drawNativeIcon);
+				//创建子webview窗口 并初始化
+				for(var i = 0; i < 4; i++) {
+					var temp = {};
+					if(!plus.webview.getWebviewById(subpages[i])) {
+						var sub = plus.webview.create(subpages[i], subpages[i], subpage_style);
+						if(i > 0) {
+							sub.hide();
+						} else {
+							temp[subpages[i]] = "true";
+							mui.extend(aniShow, temp);
+							toggleNview(self.getStyle().subNViews[0], 0);
+						}
+
+						self.append(sub);
+						//针对每个subnview 监听点击切换
+						nviews[i].addEventListener('click', clickEvent, false);
+					}
+				}
+				
+				var activePage = plus.webview.getWebviewById(subpages[0]);
+
+				// 自定义 tab 点击事件
+				function clickEvent(e) {
+					var currId = e.target.id,
+						currIndex = parseInt(currId.substr(currId.length - 1, 1) - 1),
+						currView = self.getStyle().subNViews[currIndex],
+						targetView = nviews[currIndex];
+
+					targetPage = plus.webview.getWebviewById(subpages[currIndex]);
+
+					if(targetPage == activePage) {
+						return;
+					}
+					//底部选项卡切换
+					toggleNview(currView, currIndex);
+
+					if(currIndex !== 3){
+						//若为iOS平台或非首次显示，则直接显示
+						if(mui.os.ios || aniShow[targetPage]) {
+							plus.webview.show(targetPage);
+						} else {
+							//否则，使用fade-in动画，且保存变量
+							var temp = {};
+							temp[targetPage] = "true";
+							mui.extend(aniShow, temp);
+							plus.webview.show(targetPage, "fade-in", 300);
+						}
+						//隐藏当前;
+						plus.webview.hide(activePage);
+						//更改当前活跃的页面
+						activePage = targetPage;						
+					}else{
+						var newWV = plus.webview.open('html/new-webview.html','new');
+						newWV.show('slide-in-right',300);
+					}
+				}
+				
+				//ios 切换显示
+				function toggleNativeObj(type) {
+					if(type == 'hide'){
+						drawNativeIconBg.hide();
+						hideBg.hide();
+						drawNativeIcon.hide();
+					}else if(type == 'show'){
+						drawNativeIconBg.show();
+						hideBg.show();
+						drawNativeIcon.show();
+					}else{
+						return;
+					}
+				}
+			
+
+				//更改颜色
+				function changeColor(obj, color) {
+					obj.color = color;
+					return obj
+				}
+
+				function toggleNview(currObj, currIndex) {
+					// 重绘当前nview
+					self.updateSubNViews([{
+						id: currObj.id,
+						tags: [{
+							tag: 'font', //currObj.tag
+							id: currObj.id + 1,
+							position: currObj.tags[0].position,
+							text: currObj.tags[0].text,
+							textStyles: changeColor(currObj.tags[0].textStyles, active_color)
+						}, {
+							tag: 'font',
+							id: currObj.id + 2,
+							position: currObj.tags[1].position,
+							text: currObj.tags[1].text,
+							textStyles: changeColor(currObj.tags[1].textStyles, active_color)
+						}]
+					}])
+
+					// 重绘兄弟nview
+					for(var i = 0; i < 4; i++) {
+						var viewObj = self.getStyle().subNViews[i];
+
+						if(i !== currIndex) {
+							updateSubNView(viewObj);
+						}
+					}
+				};
+
+				function updateSubNView(obj) {
+					self.updateSubNViews([{
+						id: obj.id,
+						tags: [{
+							tag: 'font', //obj.tag
+							id: obj.id + 1,
+							position: obj.tags[0].position,
+							text: obj.tags[0].text,
+							textStyles: changeColor(obj.tags[0].textStyles, normal_color)
+						}, {
+							tag: 'font',
+							id: obj.id + 2,
+							position: obj.tags[1].position,
+							text: obj.tags[1].text,
+							textStyles: changeColor(obj.tags[1].textStyles, normal_color)
+						}]
+					}])
+				}
+			});
 		</script>
-</body>
+	</body>
+
 </html>

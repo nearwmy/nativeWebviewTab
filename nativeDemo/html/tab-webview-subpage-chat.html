@@ -27,7 +27,7 @@
 		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
 			<div class="mui-scroll">
 				<div class="title">
-					这是webview模式选项卡中的第2个子页面，该页面展示一个支持下拉刷新、上拉加载的消息列表
+					这是subNView模式选项卡中的第2个子页面，该页面展示一个支持下拉刷新、上拉加载的消息列表
 				</div>
 				<ul class="mui-table-view mui-table-view-chevron">
 					<li class="mui-table-view-cell">
@@ -100,6 +100,7 @@
 				pullRefresh: {
 					container: '#pullrefresh',
 					down: {
+						style:'circle',
 						callback: pulldownRefresh
 					},
 					up: {
@@ -123,6 +124,7 @@
 						table.insertBefore(li, table.firstChild);
 					}
 					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+					mui.toast('下拉刷新成功');
 				}, 1000);
 			}
 			var count = 0;
@@ -142,21 +144,6 @@
 					}
 				}, 1000);
 			}
-			window.addEventListener('scroll', function(){
-				console.log('aaa');
-				
-			})
-//			mui.plusReady(function() {
-//				var subNview = plus.webview.getWebviewById('index').getSubNViews()[0];
-//				window.addEventListener('swipedown', function(e) {
-//					subNview.show('slide-in-bottom', 2000);
-//					console.log('向下滑动');
-//				});
-//				window.addEventListener('swipeup', function(e) {
-//					subNview.hide('slide-out-bottom', 2000);
-//					console.log('向上滑动');
-//				});
-//			})  
 		</script>
 	</body>
 
